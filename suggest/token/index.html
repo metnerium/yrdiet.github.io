@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обработка токена</title>
+    <style>
+        html, body {
+            background: #eee;
+        }
+    </style>
+    <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-token-with-polyfills-latest.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            window.YaSendSuggestToken("https://yrdietapp.ru", {
+                success: true
+            });
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация...</title>
+    <style>
+        html, body {
+            background: #eee;
+        }
+    </style>
+    <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        window.onload = function() {
+            window.YaAuthSuggest.init({
+                client_id: 'c5d2842fe85f4a0bad9cecb6eefed09c',
+                response_type: 'token',
+                redirect_uri: 'https://yrdietapp.ru/suggest/token'
+            },
+            'https://yrdietapp.ru', {
+                view: 'button',
+                parentId: 'container',
+                buttonView: 'main',
+                buttonTheme: 'light',
+                buttonSize: 'm',
+                buttonBorderRadius: 0
+            })
+            .then(function(result) {
+                return result.handler()
+            })
+            .then(function(data) {
+                console.log('Сообщение с токеном: ', data);
+                document.body.innerHTML += `Сообщение с токеном: ${JSON.stringify(data)}`;
+            })
+            .catch(function(error) {
+                console.log('Что-то пошло не так: ', error);
+                document.body.innerHTML += `Что-то пошло не так: ${JSON.stringify(error)}`;
+            });
+        };
+    </script>
+</body>
+</html>

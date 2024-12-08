@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card">
+            <h1>Профиль</h1>
+            <div id="profile-info">
+                Загрузка данных...
+            </div>
+            <button onclick="logout()" class="logout-button">Выйти</button>
+        </div>
+    </div>
+    <script>
+        function logout() {
+            localStorage.removeItem('yaAuthToken');
+            window.location.href = '/';
+        }
+
+        window.onload = function() {
+            const token = localStorage.getItem('yaAuthToken');
+            if (!token) {
+                window.location.href = '/';
+            }
+        }
+    </script>
+</body>
+</html>
